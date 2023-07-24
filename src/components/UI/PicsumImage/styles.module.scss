@@ -1,0 +1,10 @@
+@import "/src/styles/variables";
+
+.image {
+  transition: filter linear $transitionMs;
+  filter: grayscale(0);
+
+  &.grayscale {
+    filter: grayscale(1);
+  }
+}

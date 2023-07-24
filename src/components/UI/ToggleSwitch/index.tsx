@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { FC, KeyboardEvent, useCallback } from 'react';
+import React, { FC, KeyboardEvent, useCallback } from 'react';
 import { ReactComponent as CloseSVG } from '../../../assets/icons/close.svg';
 import { ReactComponent as DoneSVG } from '../../../assets/icons/done.svg';
 import { KeyCode } from '../../../common/enums/keycodes';
@@ -12,18 +12,21 @@ interface Props {
 }
 
 const ToggleSwitch: FC<Props> = ({ value, onChange }) => {
-  const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.code == KeyCode.SPACE || e.key == KeyCode.ENTER) {
-      onChange();
-    }
-  }, []);
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.code == KeyCode.SPACE || e.key == KeyCode.ENTER) {
+        onChange();
+      }
+    },
+    [onChange]
+  );
 
   return (
     <div
       className={classNames(styles.root, {
         [styles.active]: value,
       })}
-      onClick={onChange}
+      onClick={() => onChange()}
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >

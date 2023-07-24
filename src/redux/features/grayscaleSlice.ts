@@ -11,7 +11,7 @@ const initialState: GrayscaleState = {
 };
 
 export const grayscaleSlice = createSlice({
-  name: 'counter',
+  name: 'grayscaleSlice',
   initialState,
   reducers: {
     enableGrayscale: (state) => {

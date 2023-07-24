@@ -16,7 +16,10 @@ const HomeHeader: FC = () => {
   return (
     <div className={styles.homeHeader}>
       <div className={styles.left}>
-        <ToggleSwitch value={grayscale} onChange={dispatch(toggleGrayscale)} />
+        <ToggleSwitch
+          value={grayscale}
+          onChange={() => dispatch(toggleGrayscale())}
+        />
         <span>Make photos grayscale</span>
       </div>
       <div className={styles.right}>

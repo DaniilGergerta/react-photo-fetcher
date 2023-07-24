@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { ComponentProps, FC } from 'react';
 import styles from './styles.module.scss';
 
@@ -12,7 +13,7 @@ const Button: FC<ComponentProps<'button'> & Props> = ({
   ...rest
 }) => {
   return (
-    <button className={styles.btn} onClick={onClick} {...rest}>
+    <button className={classNames(className, styles.btn)} {...rest}>
       {label}
     </button>
   );

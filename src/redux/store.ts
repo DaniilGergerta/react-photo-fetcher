@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import grayscale from './features/grayscaleSlice';
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     grayscale,
   },
