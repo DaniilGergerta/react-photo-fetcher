@@ -1,0 +1,54 @@
+@import '/src/styles/variables';
+
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: 42px;
+  height: 22px;
+  cursor: pointer;
+  transition: background-color ease-in-out $transitionMs;
+  border-radius: 22px;
+  background-color: $color-dark-gray;
+  gap: 4px;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:hover, &:focus-visible {
+    .toggleSwitch {
+      outline: $outline-hover-md;
+    }
+  }
+
+  &.active {
+    background-color: $color-purple;
+
+    svg path {
+      fill: white;
+    }
+
+    .toggleSwitch {
+      left: calc(100% - 19px);
+    }
+  }
+
+  .toggleSwitch {
+    position: absolute;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    transition: ease-in-out $transitionMs;
+    transition-property: left, outline;
+    border-radius: 100%;
+    outline: transparent solid 0;
+    background-color: white;
+  }
+
+  svg path {
+    fill: $color-light-gray;
+  }
+}

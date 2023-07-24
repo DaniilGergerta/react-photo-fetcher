@@ -1,0 +1,16 @@
+.homeHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .left {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .right {
+
+  }
+}
