@@ -1,15 +1,38 @@
 @import "/src/styles/variables";
 
+$blur-strength: 2px;
+
 .container {
   position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/2;
 
   .image {
     display: block;
-    transition: filter linear $transitionMs;
+    width: 100%;
+    transition: linear $transitionMs;
+    transition-property: filter, transform;
+    transform: scale(1);
     filter: grayscale(0);
 
     &.grayscale {
-      filter: grayscale(1);
+      filter: grayscale(1) blur(0);
+    }
+  }
+
+  &:hover {
+    .image {
+      overflow: hidden;
+      transform: scale(1.1);
+      filter: grayscale(0) blur($blur-strength);
+
+      &.grayscale {
+        filter: grayscale(1) blur($blur-strength);
+      }
+    }
+
+    .miniModal {
+      opacity: 1;
     }
   }
 
@@ -22,7 +45,7 @@
     width: 100%;
     height: 75px;
     padding-left: 16px;
-    background-color: #000000AA;
+    background-color: $color-bg-black-transparent;
 
     p {
       width: 100%;
@@ -35,7 +58,28 @@
 
     .subtitle {
       font-size: 14px;
-      color: $color-light-gray;
+      color: $color-gray;
+    }
+  }
+
+  .miniModal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: opacity linear $transitionMs;
+    opacity: 0;
+
+    span {
+      font-size: 18px;
+      padding: 16px 24px;
+      color: white;
+      border-radius: 8px;
+      background-color: $color-bg-black-transparent;
     }
   }
 }

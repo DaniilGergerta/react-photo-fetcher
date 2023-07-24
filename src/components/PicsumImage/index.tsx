@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { ComponentProps, FC, useEffect, useState } from 'react';
 import { getImageInfo, getRandomImage } from '../../libs/axios';
 import { PicsumInfo } from '../../types/dto';
+import PicsumSkeleton from './Skeleton';
 
 import styles from './styles.module.scss';
 
@@ -11,13 +12,11 @@ interface Props {
   photoId: number;
   grayscale: boolean;
   width: number;
-  height: number;
 }
 
 const PicsumImage: FC<ComponentProps<'img'> & Props> = ({
   photoId,
   width,
-  height,
   grayscale,
   ...rest
 }) => {
@@ -29,7 +28,7 @@ const PicsumImage: FC<ComponentProps<'img'> & Props> = ({
     const asyncEffect = async () => {
       const imgResponse = await getRandomImage(
         width,
-        height,
+        Math.floor((width / 3) * 2),
         controller.signal
       );
       if (!imgResponse) return;
@@ -53,27 +52,28 @@ const PicsumImage: FC<ComponentProps<'img'> & Props> = ({
   }, []);
 
   if (!img) {
-    return <></>;
+    return <PicsumSkeleton />;
   }
 
   return (
     <div className={styles.container}>
-      <img
-        {...rest}
-        className={classNames(styles.image, {
-          [styles.grayscale]: grayscale,
-        })}
-        src={img.src}
-        width={width}
-        height={height}
-        alt={'Random image from Picsum'}
-        loading={'lazy'}
-      />
-      <a href={img.url}>
+      <a href={img.url} target="_blank" rel="noreferrer">
+        <img
+          {...rest}
+          className={classNames(styles.image, {
+            [styles.grayscale]: grayscale,
+          })}
+          src={img.src}
+          width={width}
+          alt={'Random image from Picsum'}
+          loading={'lazy'}
+        />
         <div className={styles.header}>
           <p className={styles.title}>{img.author}</p>
           <p className={styles.subtitle}>{img.url}</p>
-          <span></span>
+        </div>
+        <div className={styles.miniModal}>
+          <span>See full image</span>
         </div>
       </a>
     </div>

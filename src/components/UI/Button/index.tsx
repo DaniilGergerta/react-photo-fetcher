@@ -9,11 +9,10 @@ interface Props {
 const Button: FC<ComponentProps<'button'> & Props> = ({
   label,
   className,
-  onClick,
   ...rest
 }) => {
   return (
-    <button className={classNames(className, styles.btn)} {...rest}>
+    <button {...rest} className={classNames(className, styles.btn)}>
       {label}
     </button>
   );

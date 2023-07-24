@@ -3,7 +3,8 @@
 .btn {
   padding: 12px 16px;
   cursor: pointer;
-  transition: outline ease-in-out $transitionMs;
+  transition: ease-in-out $transitionMs;
+  transition-property: outline, background-color;
   color: $color-bg-main;
   border: none;
   border-radius: 4px;
@@ -12,5 +13,6 @@
 
   &:hover {
     outline: $outline-hover-sm;
+    background-color: darken($color-purple, 10);
   }
 }

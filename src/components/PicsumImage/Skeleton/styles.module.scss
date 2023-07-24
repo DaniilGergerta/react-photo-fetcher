@@ -1,0 +1,46 @@
+@import "/src/styles/variables";
+@import "/src/styles/mixins";
+
+.container {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 6px;
+  background-color: $color-light-gray;
+  aspect-ratio: 3/2;
+
+  @include shimmer-effect();
+
+  .header {
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 75px;
+    padding-left: 16px;
+    background-color: $color-gray;
+    gap: 8px;
+
+    p {
+      z-index: 10;
+      background-color: $color-light-gray;
+    }
+
+    .title {
+      width: 20%;
+      height: 20px;
+      border-radius: 4px;
+      @include shimmer-effect();
+    }
+
+    .subtitle {
+      width: 70%;
+      height: 14px;
+      border-radius: 3px;
+      @include shimmer-effect();
+    }
+  }
+}

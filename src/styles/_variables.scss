@@ -1,10 +1,12 @@
 $color-bg-main: #F0F0F0;
+$color-bg-black-transparent: #000000AA;
 
-$color-light-gray: #9C9C9C;
+$color-light-gray: #d7d7d7;
+$color-gray: #9C9C9C;
 $color-dark-gray: #686868;
 $color-purple: #6B4BD2;
 
-$outline-hover-md: transparentize($color-light-gray, 0.75) solid 8px;
-$outline-hover-sm: transparentize($color-light-gray, 0.75) solid 4px;
+$outline-hover-md: transparentize($color-gray, 0.75) solid 8px;
+$outline-hover-sm: transparentize($color-gray, 0.75) solid 4px;
 
 $transitionMs: 150ms;

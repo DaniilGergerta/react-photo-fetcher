@@ -6,6 +6,7 @@ import {
   selectGrayscale,
   toggleGrayscale,
 } from '../../../../redux/features/grayscaleSlice';
+import { incrementPhotoList } from '../../../../redux/features/photolistSlice';
 
 import styles from './styles.module.scss';
 
@@ -25,9 +26,7 @@ const HomeHeader: FC = () => {
       <div className={styles.right}>
         <Button
           label={'Fetch new Posts'}
-          onClick={() => {
-            return;
-          }}
+          onClick={() => dispatch(incrementPhotoList())}
         />
       </div>
     </div>

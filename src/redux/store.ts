@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import grayscale from './features/grayscaleSlice';
+import photolist from './features/photolistSlice';
 
 export const store = configureStore({
   reducer: {
     grayscale,
+    photolist,
   },
 });
 
