@@ -6,11 +6,13 @@ $blur-strength: 2px;
 .container {
   position: relative;
   overflow: hidden;
+  border-radius: 4px;
   aspect-ratio: 3/2;
 
   .image {
     display: block;
     width: 100%;
+    height: 100%;
     transition: linear $transitionMs;
     transition-property: filter, transform;
     transform: scale(1);
