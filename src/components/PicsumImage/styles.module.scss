@@ -1,4 +1,5 @@
 @import "/src/styles/variables";
+@import "/src/styles/mixins";
 
 $blur-strength: 2px;
 
@@ -49,6 +50,7 @@ $blur-strength: 2px;
 
     p {
       width: 100%;
+      text-transform: capitalize;
     }
 
     .title {
@@ -80,6 +82,16 @@ $blur-strength: 2px;
       color: white;
       border-radius: 8px;
       background-color: $color-bg-black-transparent;
+    }
+  }
+}
+
+@include onSmallMobile {
+  .container .header {
+    height: 50px;
+
+    .subtitle {
+      display: none;
     }
   }
 }

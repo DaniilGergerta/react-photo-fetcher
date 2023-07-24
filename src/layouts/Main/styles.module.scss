@@ -1,5 +1,13 @@
+@import "/src/styles/mixins";
+
 .mainLayout {
   width: 100%;
   max-width: 750px;
   margin: 15px auto;
+}
+
+@include onTablet {
+  .mainLayout {
+    padding: 0 16px;
+  }
 }

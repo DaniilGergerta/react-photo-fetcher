@@ -26,3 +26,27 @@
     );
   }
 }
+
+@mixin onTablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onSmallTablet {
+  @media (max-width: 550px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: 425px) {
+    @content;
+  }
+}
+
+@mixin onSmallMobile {
+  @media (max-width: 320px) {
+    @content;
+  }
+}

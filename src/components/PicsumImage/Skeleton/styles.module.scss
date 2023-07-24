@@ -7,7 +7,6 @@
   border-radius: 6px;
   background-color: $color-light-gray;
   aspect-ratio: 3/2;
-
   @include shimmer-effect();
 
   .header {
