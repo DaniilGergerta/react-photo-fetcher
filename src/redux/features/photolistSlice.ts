@@ -1,5 +1,6 @@
 // Define a type for the slice state
 import { createSlice } from '@reduxjs/toolkit';
+import { pushNewIds } from '../../utils/pushNewIds';
 import { RootState } from '../store';
 
 interface PhotoListState {
@@ -15,14 +16,16 @@ export const photolistSlice = createSlice({
   initialState,
   reducers: {
     incrementPhotoList: (state) => {
-      state.value.push(
-        ...Array.from({ length: 4 }, (_, index) => state.value.length + index)
-      );
+      pushNewIds(state.value);
+    },
+    resetPhotoList: (state) => {
+      pushNewIds(state.value);
+      state.value = state.value.slice(-4);
     },
   },
 });
 
-export const { incrementPhotoList } = photolistSlice.actions;
+export const { incrementPhotoList, resetPhotoList } = photolistSlice.actions;
 
 export const selectPhotolist = (state: RootState) => state.photolist.value;
 

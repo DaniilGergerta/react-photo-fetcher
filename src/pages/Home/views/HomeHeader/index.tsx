@@ -8,7 +8,7 @@ import {
   selectGrayscale,
   toggleGrayscale,
 } from '../../../../redux/features/grayscaleSlice';
-import { incrementPhotoList } from '../../../../redux/features/photolistSlice';
+import { resetPhotoList } from '../../../../redux/features/photolistSlice';
 
 import styles from './styles.module.scss';
 
@@ -38,7 +38,7 @@ const HomeHeader: FC = () => {
         <Button
           className={styles.btn}
           label={'Fetch new Posts'}
-          onClick={() => dispatch(incrementPhotoList())}
+          onClick={() => dispatch(resetPhotoList())}
         />
       </div>
     </div>
