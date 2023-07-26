@@ -1,21 +1,19 @@
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { ComponentProps, FC, useEffect, useState } from 'react';
-import { getImageInfo, getRandomImage } from '../../libs/axios';
-import { PicsumInfo } from '../../types/dto';
-import PicsumSkeleton from './Skeleton';
+import type { ComponentProps, FC } from 'react';
+import type { ImageState } from '../../types/dto';
+
+import { getImageInfo, getRandomImage } from '../../libs/api';
+import PicsumSkeleton from '../Skeleton';
 
 import styles from './styles.module.scss';
 
-type ImageState = PicsumInfo & { src: string };
-
 interface Props {
-  photoId: number;
   grayscale: boolean;
   width: number;
 }
 
 const PicsumImage: FC<ComponentProps<'img'> & Props> = ({
-  photoId,
   width,
   grayscale,
   ...rest
@@ -31,19 +29,22 @@ const PicsumImage: FC<ComponentProps<'img'> & Props> = ({
         Math.floor((width / 3) * 2),
         controller.signal
       );
+
       if (!imgResponse) return;
 
       const infoResponse = await getImageInfo(
         imgResponse.headers['picsum-id'],
         controller.signal
       );
-      if (!infoResponse) return;
 
-      setImg({
-        ...infoResponse.data,
-        src: URL.createObjectURL(imgResponse.data),
-      });
+      if (infoResponse) {
+        setImg({
+          ...infoResponse.data,
+          src: URL.createObjectURL(imgResponse.data),
+        });
+      }
     };
+
     void asyncEffect();
 
     return () => {
@@ -79,4 +80,5 @@ const PicsumImage: FC<ComponentProps<'img'> & Props> = ({
     </div>
   );
 };
+
 export default PicsumImage;

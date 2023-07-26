@@ -1,38 +1,25 @@
-import axios, { AxiosResponse } from 'axios';
-import { PicsumInfo } from '../../types/dto';
+import axios from 'axios';
+import type { AxiosError, AxiosResponse } from 'axios';
+import type { IAxiosError, IStockError, PicsumInfo } from '../../types/dto';
 
 export const picsumInstance = axios.create({
   baseURL: 'https://picsum.photos/',
 });
 
-export const getRandomImage = async (
-  width: number,
-  height: number,
-  signal?: AbortSignal
-): Promise<AxiosResponse<Blob> | undefined> => {
-  try {
-    return await picsumInstance.get<Blob>(`${width}/${height}`, {
-      responseType: 'blob',
-      signal,
-    });
-  } catch (e: any) {
-    if (e.name != 'CanceledError') {
-      console.error('getRandomImage()', e);
+export const axiosErrorHandler = <T>(
+  callback: (err: IAxiosError<T> | IStockError<T>) => void
+) => {
+  return (error: Error | AxiosError<T>) => {
+    if (axios.isAxiosError(error)) {
+      callback({
+        error: error,
+        type: 'axios-error',
+      });
+    } else {
+      callback({
+        error: error,
+        type: 'stock-error',
+      });
     }
-    return undefined;
-  }
-};
-
-export const getImageInfo = async (
-  id: string,
-  signal?: AbortSignal
-): Promise<AxiosResponse<PicsumInfo> | undefined> => {
-  try {
-    return await picsumInstance.get<PicsumInfo>(`id/${id}/info`, { signal });
-  } catch (e: any) {
-    if (e.name != 'CanceledError') {
-      console.error('getRandomImage()', e);
-    }
-    return undefined;
-  }
+  };
 };
