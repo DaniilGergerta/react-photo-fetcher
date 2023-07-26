@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import { memo } from 'react';
+import type { FC } from 'react';
 
 import styles from './styles.module.scss';
 
@@ -9,4 +10,5 @@ const Navbar: FC = () => {
     </nav>
   );
 };
-export default Navbar;
+
+export default memo(Navbar);

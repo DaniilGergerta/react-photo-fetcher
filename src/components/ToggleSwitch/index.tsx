@@ -1,8 +1,10 @@
 import classNames from 'classnames';
-import React, { FC, KeyboardEvent, useCallback } from 'react';
-import { ReactComponent as CloseSVG } from '../../../assets/icons/close.svg';
-import { ReactComponent as DoneSVG } from '../../../assets/icons/done.svg';
-import { KeyCode } from '../../../common/enums/keycodes';
+import { useCallback } from 'react';
+import type { FC, KeyboardEvent } from 'react';
+import { KeyCode } from '../../common/enums/keycodes';
+
+import { ReactComponent as CloseSVG } from '../../assets/icons/close.svg';
+import { ReactComponent as DoneSVG } from '../../assets/icons/done.svg';
 
 import styles from './styles.module.scss';
 

@@ -1,6 +1,7 @@
+import type { FC } from 'react';
 import styles from './styles.module.scss';
 
-const PicsumSkeleton = () => {
+const PicsumSkeleton: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>

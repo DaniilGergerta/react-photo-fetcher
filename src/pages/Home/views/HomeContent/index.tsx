@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import PicsumImage from '../../../../components/PicsumImage';
-import Button from '../../../../components/UI/Button';
+import Button from '../../../../components/Button';
 import { useAppDispatch } from '../../../../hooks/redux';
 import { selectGrayscale } from '../../../../redux/features/grayscaleSlice';
 import {
@@ -20,7 +20,7 @@ const HomeContent = () => {
     <div className={styles.content}>
       <div className={styles.grid}>
         {photolist.map((i) => (
-          <PicsumImage key={i} photoId={i} width={400} grayscale={grayscale} />
+          <PicsumImage key={i} width={400} grayscale={grayscale} />
         ))}
       </div>
       <Button

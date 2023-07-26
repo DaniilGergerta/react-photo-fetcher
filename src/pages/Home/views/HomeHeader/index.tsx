@@ -1,8 +1,8 @@
 import { useIntersection } from '@mantine/hooks';
 import classNames from 'classnames';
 import { FC } from 'react';
-import Button from '../../../../components/UI/Button';
-import ToggleSwitch from '../../../../components/UI/ToggleSwitch';
+import Button from '../../../../components/Button';
+import ToggleSwitch from '../../../../components/ToggleSwitch';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
 import {
   selectGrayscale,
